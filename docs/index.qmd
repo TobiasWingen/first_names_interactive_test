@@ -5,7 +5,7 @@ editor: visual
 ---
 
 
-```{r echo=FALSE}
+```{r}
 library(plotly)
 
 # Sample data
