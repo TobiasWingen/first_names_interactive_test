@@ -3,3 +3,21 @@ title: "Interactive Plots"
 format: html
 editor: visual
 ---
+
+
+```{r echo=FALSE}
+library(plotly)
+
+# Sample data
+set.seed(42)  # For reproducible results
+x <- rnorm(100)
+y <- rnorm(100)
+group <- sample(LETTERS[1:3], 100, replace = TRUE)  # Categorical variable
+
+# Create an interactive scatter plot
+plot_ly(data = data.frame(x, y, group), x = ~x, y = ~y, type = 'scatter', mode = 'markers',
+        color = ~group, marker = list(size = 10)) %>%
+  layout(title = 'Interactive Scatter Plot',
+         xaxis = list(title = 'X-axis'),
+         yaxis = list(title = 'Y-axis'))
+```
