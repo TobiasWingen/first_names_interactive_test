@@ -6,11 +6,7 @@ editor_options:
   chunk_output_type: console
 ---
 
-This website presents stereotypic ratings of first names, as judged by
-German participants under laboratory conditions. For detailed
-information about the methodology, please refer to [Speckmann and Wingen (2023)](https://econtent.hogrefe.com/doi/full/10.1027/2151-2604/a000515) . It is important to note that these ratings were provided by a
-non-representative sample of students and do not reflect actual
-attributes of individuals bearing these names.
+This website presents stereotypic ratings of first names, as judged by German participants under laboratory conditions. For detailed information about the methodology, please refer to [Speckmann and Wingen (2023)](https://econtent.hogrefe.com/doi/full/10.1027/2151-2604/a000515) . It is important to note that these ratings were provided by a non-representative sample of students and do not reflect actual attributes of individuals bearing these names.
 
 ```{r loading data and wrangling, echo = F, include = F}
 library(readr)
@@ -23,9 +19,10 @@ data <- read_csv("name_ratings_lab.csv")
 #reorder and name
 
 data <- data |> 
-  select(-number, name, everything()) |> 
+  select(-number) |> 
+  select(name, everything()) |> 
   rename(judged_gender = gender) |> 
-  dplyr::arrange(-modern)
+  arrange(-modern)
 
 # Recoding 'gender' and rounding all numerical values
 data <- data %>%
